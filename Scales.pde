@@ -17,7 +17,9 @@ void setup(){
   
   scale1 = createScale(scaleWidth, scaleHeight, scaleColor1, scaleGradientResolution, scaleGradientMaxDarkness);
   scale2 = createScale(scaleWidth, scaleHeight, scaleColor2, scaleGradientResolution, scaleGradientMaxDarkness);
-  
+}
+
+void draw(){
   drawBackground();
 }
 
@@ -82,3 +84,4 @@ void drawBackground(){
     scaleColorState = (scaleColorState + 1)%2; //Offset the color state on the new row to prevent vertical lines of alternating colors
   }
 }
+
