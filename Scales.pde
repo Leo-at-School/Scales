@@ -22,7 +22,7 @@ void setup(){
 
 //Scale shape
 PShape createScale(int scaleWidth, int scaleHeight, color scaleColor, int scaleGradientResolution, color scaleGradientMaxDarkness){
-  PShape scale = createShape(GROUP);
+  PShape newScale = createShape(GROUP);
   
   color gradientColorBrighter; //Color transitions from black to the color
   color gradientColorDarker; //Color transitions from the color to black
@@ -35,27 +35,27 @@ PShape createScale(int scaleWidth, int scaleHeight, color scaleColor, int scaleG
     PShape gradientRectLeft = createShape(RECT, (i*scaleWidth)/(2*scaleGradientResolution), 0, scaleWidth/(2*scaleGradientResolution) + 1, scaleHeight);
     gradientRectLeft.setFill(gradientColorBrighter);
     gradientRectLeft.setStroke(false);
-    scale.addChild(gradientRectLeft);
+    newScale.addChild(gradientRectLeft);
     
     PShape gradientRectRight = createShape(RECT, (i*scaleWidth)/(2*scaleGradientResolution) + scaleWidth/2, 0, scaleWidth/(2*scaleGradientResolution) + 1, scaleHeight);
     gradientRectRight.setFill(gradientColorDarker);
     gradientRectRight.setStroke(false);
-    scale.addChild(gradientRectRight);
+    newScale.addChild(gradientRectRight);
   }
   
   //Outline the top portion
   PShape outline1 = createShape(LINE, 0, 0, 0, 0 + scaleHeight);
-  scale.addChild(outline1);
+  newScale.addChild(outline1);
   
   PShape outline2 = createShape(LINE, 0 + scaleWidth, 0, 0 + scaleWidth, 0 + scaleHeight);
-  scale.addChild(outline2);
+  newScale.addChild(outline2);
   
   //Bottom portion
   PShape bottomEllipse = createShape(ELLIPSE, 0 + scaleWidth/2, 0 + scaleHeight, scaleWidth, scaleHeight/2);
   bottomEllipse.setFill(scaleColor);
-  scale.addChild(bottomEllipse);
+  newScale.addChild(bottomEllipse);
   
-  return scale;
+  return newScale;
 }
 
 void drawBackground(){
@@ -81,3 +81,4 @@ void drawBackground(){
     scaleColorState = (scaleColorState + 1)%2; //Offset the color state on the new row to prevent vertical lines of alternating colors
   }
 }
+
